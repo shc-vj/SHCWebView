@@ -1,7 +1,7 @@
 SHCWebView
 ============
 
-[SHCWebView](https://github.com/shc-vj/SHCWebView) is [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) compatible with [NSTextFinderClient](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinderClient_Protocol/index.html) protocol. It's supporting  find functionality pretty mach like in the Safari browser. Best results can be accomplished when [NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) object is configured to use "*Incremental searching*" and "*Dim Content View*".
+[SHCWebView](https://github.com/shc-vj/SHCWebView) is [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) compatible with [NSTextFinderClient](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinderClient_Protocol/index.html) protocol. It's supporting  find functionality pretty mach like in the *Apple Safari* browser. Best results can be accomplished when [NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) object is configured to use "*Incremental searching*" and "*Dim Content View*".
 
 ## Usage
 
@@ -16,6 +16,10 @@ It's possible to work only with [WebView](https://developer.apple.com/library/ma
 So, common setup is to use [SHCWebView](https://github.com/shc-vj/SHCWebView) inside [NSScrollView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSScrollView_Class/index.html). If you don't use *Auto Layout* remember to set [NSClipView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSClipView_Class/index.html) (`NSScrollView.contentView`) property `autoresizeSubviews` to *NO*.
 
 ## Limitations
+
+[NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) is well suited for a non-layerd text, but with WebView where today we have many layers (DIVs) which some of them can be hidden or floated above other content, dynamic content updated with *JavaScript*, it shows its weakness.
+
+[NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) assumes that found text is visible all the time and in situation when we have a floating header (like menu by ex.) the 'holes' in dimming view will be displayed over our header (not exactly what we want) - but the same problem you can observe in the *Apple Safari* browser.
 
 ## Inner workings
 
