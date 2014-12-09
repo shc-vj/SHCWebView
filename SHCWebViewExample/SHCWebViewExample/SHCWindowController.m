@@ -38,7 +38,8 @@
 	
 	// side note: you can try what will happen if you use WebView internal scroll as NSTextFinder.findBarContainer
 	// hint: try to reach any link when displaying FindBar ;-)
-	self.textFinder.findBarContainer = self.webView.mainFrame.frameView.documentView.enclosingScrollView;
+	// uncomment line below
+	//	self.textFinder.findBarContainer = self.webView.mainFrame.frameView.documentView.enclosingScrollView;
 	
 	
 	self.urlTextField.delegate = self;

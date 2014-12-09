@@ -15,11 +15,7 @@
 
 
 /**
- SHCWebView is WebView subclass implementing <NSTextFinderClient> protocol.
- 
- Additionally it supports highlighting of <NSRegularExpression> matches with given CSS style
- 
- @warning All methods must be called from the main thread ! (DOM requirement)
+ SHCWebView is WebView subclass implementing <NSTextFinderClient> protocol. 
  */
 @interface SHCWebView : WebView <NSTextFinderClient>
 
