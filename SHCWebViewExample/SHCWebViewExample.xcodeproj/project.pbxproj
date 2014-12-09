@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E113E5E31A373783006ACC8B /* SHCWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E113E5E11A373783006ACC8B /* SHCWindowController.m */; };
+		E113E5EC1A3759C4006ACC8B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E113E5EA1A3759C4006ACC8B /* MainMenu.xib */; };
+		E113E5ED1A3759C4006ACC8B /* SHCWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E113E5EB1A3759C4006ACC8B /* SHCWindowController.xib */; };
+		E184066E1A2E198700CAA733 /* SHCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E184066D1A2E198700CAA733 /* SHCWebView.m */; };
 		E1FD8CF21A2C917500E254E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD8CEC1A2C917500E254E7 /* AppDelegate.m */; };
-		E1FD8CF31A2C917500E254E7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1FD8CED1A2C917500E254E7 /* MainMenu.xib */; };
 		E1FD8CF41A2C917500E254E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1FD8CEF1A2C917500E254E7 /* Images.xcassets */; };
 		E1FD8CF51A2C917500E254E7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1FD8CF01A2C917500E254E7 /* Info.plist */; };
 		E1FD8CF61A2C917500E254E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD8CF11A2C917500E254E7 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E109EAF41A2C905900E42A7E /* SHCWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHCWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E109EAF41A2C905900E42A7E /* SHCWebViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHCWebViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E113E5E01A373783006ACC8B /* SHCWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCWindowController.h; sourceTree = "<group>"; };
+		E113E5E11A373783006ACC8B /* SHCWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCWindowController.m; sourceTree = "<group>"; };
+		E113E5EA1A3759C4006ACC8B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		E113E5EB1A3759C4006ACC8B /* SHCWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCWindowController.xib; sourceTree = "<group>"; };
+		E184066C1A2E198700CAA733 /* SHCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCWebView.h; sourceTree = "<group>"; };
+		E184066D1A2E198700CAA733 /* SHCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCWebView.m; sourceTree = "<group>"; };
 		E1FD8CEB1A2C917500E254E7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1FD8CEC1A2C917500E254E7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E1FD8CEE1A2C917500E254E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E1FD8CEF1A2C917500E254E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1FD8CF01A2C917500E254E7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1FD8CF11A2C917500E254E7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,17 +54,31 @@
 		E109EAF51A2C905900E42A7E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E109EAF41A2C905900E42A7E /* SHCWebView.app */,
+				E109EAF41A2C905900E42A7E /* SHCWebViewExample.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E184066B1A2E198700CAA733 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E184066C1A2E198700CAA733 /* SHCWebView.h */,
+				E184066D1A2E198700CAA733 /* SHCWebView.m */,
+			);
+			name = src;
+			path = ../../src;
 			sourceTree = "<group>";
 		};
 		E1FD8CEA1A2C917500E254E7 /* SHCWebViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				E184066B1A2E198700CAA733 /* src */,
 				E1FD8CEB1A2C917500E254E7 /* AppDelegate.h */,
 				E1FD8CEC1A2C917500E254E7 /* AppDelegate.m */,
-				E1FD8CED1A2C917500E254E7 /* MainMenu.xib */,
+				E113E5E01A373783006ACC8B /* SHCWindowController.h */,
+				E113E5E11A373783006ACC8B /* SHCWindowController.m */,
+				E113E5EB1A3759C4006ACC8B /* SHCWindowController.xib */,
+				E113E5EA1A3759C4006ACC8B /* MainMenu.xib */,
 				E1FD8CEF1A2C917500E254E7 /* Images.xcassets */,
 				E1FD8CF01A2C917500E254E7 /* Info.plist */,
 				E1FD8CF11A2C917500E254E7 /* main.m */,
@@ -81,7 +103,7 @@
 			);
 			name = SHCWebViewExample;
 			productName = SHCWebView;
-			productReference = E109EAF41A2C905900E42A7E /* SHCWebView.app */;
+			productReference = E109EAF41A2C905900E42A7E /* SHCWebViewExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,7 +126,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = E109EAEB1A2C905900E42A7E;
 			productRefGroup = E109EAF51A2C905900E42A7E /* Products */;
@@ -121,9 +142,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1FD8CF31A2C917500E254E7 /* MainMenu.xib in Resources */,
 				E1FD8CF41A2C917500E254E7 /* Images.xcassets in Resources */,
 				E1FD8CF51A2C917500E254E7 /* Info.plist in Resources */,
+				E113E5ED1A3759C4006ACC8B /* SHCWindowController.xib in Resources */,
+				E113E5EC1A3759C4006ACC8B /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,21 +158,12 @@
 			files = (
 				E1FD8CF61A2C917500E254E7 /* main.m in Sources */,
 				E1FD8CF21A2C917500E254E7 /* AppDelegate.m in Sources */,
+				E113E5E31A373783006ACC8B /* SHCWindowController.m in Sources */,
+				E184066E1A2E198700CAA733 /* SHCWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E1FD8CED1A2C917500E254E7 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1FD8CEE1A2C917500E254E7 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E109EB0F1A2C905A00E42A7E /* Debug */ = {
@@ -234,7 +247,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = SHCWebView/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SHCWebViewExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -245,7 +258,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = SHCWebView/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SHCWebViewExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

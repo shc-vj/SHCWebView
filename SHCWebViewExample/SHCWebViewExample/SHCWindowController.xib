@@ -19,17 +19,17 @@
         <window title="SHCWebView Example" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" animationBehavior="default" id="14U-D0-4I3" userLabel="SHCWebViewWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="177" y="229" width="537" height="404"/>
+            <rect key="contentRect" x="205" y="194" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-            <value key="minSize" type="size" width="500" height="350"/>
+            <value key="minSize" type="size" width="800" height="600"/>
             <view key="contentView" id="TaQ-kV-Jee">
-                <rect key="frame" x="0.0" y="0.0" width="537" height="404"/>
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="r4V-gx-7dZ">
-                        <rect key="frame" x="62" y="373" width="455" height="22"/>
+                        <rect key="frame" x="62" y="569" width="718" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="jgkdfjgkd" placeholderString="URL" drawsBackground="YES" id="w5Q-a6-f10">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="http://kernel.org" placeholderString="URL" drawsBackground="YES" id="w5Q-a6-f10">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -39,18 +39,18 @@
                         </connections>
                     </textField>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="bwf-Fg-mTb">
-                        <rect key="frame" x="0.0" y="-1" width="538" height="366"/>
+                        <rect key="frame" x="0.0" y="-1" width="801" height="562"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" autoresizesSubviews="NO" drawsBackground="NO" copiesOnScroll="NO" id="7O6-HT-NpY">
                             <rect key="frame" x="1" y="1" width="166" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <view id="uEa-dg-IDZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="536" height="364"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="799" height="560"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <webView id="tHH-RH-ZD0" customClass="SHCWebView">
-                                            <rect key="frame" x="0.0" y="0.0" width="536" height="364"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="799" height="560"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" javaEnabled="NO">
                                                 <nil key="identifier"/>
@@ -73,7 +73,7 @@
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IJq-l4-iEt">
-                        <rect key="frame" x="18" y="376" width="38" height="17"/>
+                        <rect key="frame" x="18" y="572" width="38" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="URL" id="JOv-DX-hW6">
                             <font key="font" metaFont="system"/>
@@ -83,7 +83,7 @@
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="334.5" y="290"/>
+            <point key="canvasLocation" x="334" y="290"/>
         </window>
         <textFinder incrementalSearchingEnabled="YES" incrementalSearchingShouldDimContentView="YES" id="oeZ-kU-6E0">
             <connections>

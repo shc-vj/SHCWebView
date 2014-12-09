@@ -1,6 +1,6 @@
 //
 //  AppDelegate.h
-//  SHCWebView
+//  SHCWebViewExample
 //
 //  Created by pawelc on 01/12/14.
 //  Copyright (c) 2014 Metasprint. All rights reserved.

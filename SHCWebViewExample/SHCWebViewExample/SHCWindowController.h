@@ -10,4 +10,6 @@
 
 @interface SHCWindowController : NSWindowController
 
+- (IBAction)performFindAction:(id)sender;
+
 @end
