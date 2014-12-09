@@ -82,12 +82,30 @@ static BOOL NodeIsSpanElementWithTextContent(DOMNode* node) {
 - (void)setupScrollObserver;
 - (void)setupFrameObserver;
 
-
 - (NSString*)stringFromWebViewTextRanges:(NSArray*)textRanges;
 - (void)configureDOMRange:(DOMRange*)domRange forTextRange:(NSRange)range;
 
 // helpers
 - (void)webViewTextRangesHelper:(DOMNode*)beginNode posPtr:(NSUInteger*)posPtr outWebViewTextRanges:(NSMutableArray*)textRanges;
+
+
+// experimental section
+
+/**
+ Highlight given DOMRange.
+ Highlight style is get from <highlightCSS> property
+ 
+ @param domRange DOMRange to highlight
+ @param index	Index used as a postfix to the name of a SPAN element with class="webViewHighlight" (name="webViewMatch_<index>")
+ */
+- (void)highlightDOMRange:(DOMRange*)domRange withIndex:(NSInteger)index;
+
+/**
+ Removes highlights only in given node and its children
+ 
+ @param node DOMNode to start with
+ */
+- (void)removeHighlightsInNode:(DOMNode*)node;
 
 
 @end
@@ -190,6 +208,18 @@ static BOOL NodeIsSpanElementWithTextContent(DOMNode* node) {
 }
 
 
+#pragma mark - Properties (Experimental)
+
+- (NSString*)highlightCSS
+{
+	if( nil == _highlightCSS ) {
+		// default value
+		return @"background-color: yellow; border: 1px; border-color: black; border-style: dashed;";
+	}
+	
+	return _highlightCSS;
+}
+
 #pragma mark - Properties (Private)
 
 - (NSArray*)webViewTextRanges
@@ -229,7 +259,158 @@ static BOOL NodeIsSpanElementWithTextContent(DOMNode* node) {
 	[self.textFinder setFindIndicatorNeedsUpdate:YES];
 }
 
-#pragma mark - Instance methods (Private)
+#pragma mark - Instance methods (Private Experimental)
+
+- (void)highlightNode:(DOMNode*)node withIndex:(NSInteger)index
+{
+	DOMDocument *document = self.mainFrame.DOMDocument;
+	
+	while( node ) {
+		
+		__unused NSString *content = node.nodeValue;
+		
+		DOMNode *parentNode = node.parentNode;
+		if( parentNode.nodeType == DOM_ELEMENT_NODE ) {
+			DOMElement *element = (DOMElement*)parentNode;
+			
+			if( [[element getAttribute:@"class"] isEqualToString:@"webViewHighlight"] ) {
+				node = node.nextSibling;
+				continue;
+			}
+		}
+		
+		if( node.nodeType == DOM_TEXT_NODE && node.nodeValue.length > 0 ) {
+			
+			
+			DOMElement *span = [document createElement:@"span"];
+			[span setAttribute:@"class" value:@"webViewHighlight"];
+			[span setAttribute:@"name" value:[NSString stringWithFormat:@"webViewMatch_%ld", (long)index]];
+			span.style.cssText = self.highlightCSS;
+			
+			
+			[node.parentNode replaceChild:span oldChild:node];
+			
+			[span appendChild:node];
+			
+		}
+		
+		if( node.firstChild ) {
+			[self highlightNode:node.firstChild withIndex:index];
+		}
+		
+		node = node.nextSibling;
+	}
+}
+
+- (void)highlightDOMRange:(DOMRange*)domRange withIndex:(NSInteger)index
+{
+	DOMDocumentFragment *element = [domRange extractContents];
+	[self removeHighlightsInNode:element];
+	[self highlightNode:element withIndex:index];
+	[domRange insertNode:element];
+}
+
+- (void)removeHighlightsInNode:(DOMNode*)node
+{
+	DOMDocument *document = self.mainFrame.DOMDocument;
+	
+	while( node ) {
+		
+		int type = node.nodeType;
+		if( type == DOM_ELEMENT_NODE ) {
+			
+			DOMElement *element = (DOMElement*)node;
+			
+			if( [[element getAttribute:@"class"] isEqualToString:@"webViewHighlight"] ) {
+				// retrieve old fragment node inside SPAN
+				// (use DOMRange)
+				DOMRange *spanRange = [document createRange];
+				[spanRange selectNodeContents:element];
+				
+				// move fragment node in hierachy
+				DOMDocumentFragment *oldFragment = [spanRange extractContents];
+				DOMNode *nextNode                = element.nextSibling;
+				[element.parentNode insertBefore:oldFragment refChild:nextNode];
+				
+				// remove SPAN
+				[element.parentNode removeChild:element];
+				
+				node = nextNode.previousSibling;
+				
+			}
+		}
+		
+		DOMNode *firstChild = node.firstChild;
+		if( firstChild ) {
+			[self removeHighlightsInNode:firstChild];
+		}
+		
+		node = node.nextSibling;
+	}
+	
+}
+
+
+#pragma mark - Instance methods (Experimental)
+
+- (NSInteger)highlightTextMatchingRegularExpression:(NSRegularExpression*)regEx
+{
+	NSString *stringValue = [self string];
+	
+	NSArray *matches = [regEx matchesInString:stringValue options:0 range:NSMakeRange(0, stringValue.length)];
+	
+	if( matches.count < 1 ) {
+		return -1;
+	}
+	
+	[self.textFinder noteClientStringWillChange];
+	
+	DOMDocument *document = self.mainFrame.DOMDocument;
+	
+	// configure ranges
+	NSMutableArray *domRanges = [NSMutableArray array];
+
+	for( NSTextCheckingResult *result in matches ) {
+
+		DOMRange *domRange = [document createRange];
+		[self configureDOMRange:domRange forTextRange:result.range];
+
+		[domRanges addObject:domRange];
+	}
+			
+	// modify DOM ranges
+	unsigned int counter = 0;
+	for( DOMRange *domRange in domRanges ) {
+		[self highlightDOMRange:domRange withIndex:counter++];
+	}
+	
+	// we have modified DOM tree
+	// invalidate our textRanges
+	[self invalidateTextRanges];
+	
+	return counter;
+}
+
+
+- (void)removeHighlights
+{
+    DOMDocument *document = self.mainFrame.DOMDocument;
+    DOMNode *bodyNode     = document.body;
+		
+	[self.textFinder noteClientStringWillChange];
+
+	[self removeHighlightsInNode:bodyNode];
+	
+	// we have modified DOM tree
+	// invalidate our textRanges
+	[self invalidateTextRanges];
+
+}
+
+
+
+
+#pragma mark - NSTextFinder utils
 
 - (void)webViewTextRangesHelper:(DOMNode*)beginNode posPtr:(NSUInteger*)posPtr outWebViewTextRanges:(NSMutableArray*)textRanges
 {
