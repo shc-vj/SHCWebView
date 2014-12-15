@@ -28,16 +28,16 @@ So, common setup is to use [SHCWebView](https://github.com/shc-vj/SHCWebView) in
 
 ## Inner workings
 
-NSTextFinder uses client object implementing NSTextFinderClient protocol to achieve its functionality:
+[NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) uses client object implementing [NSTextFinderClient](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinderClient_Protocol/index.html) protocol to achieve its functionality:
 
 1. Asks client for a string representation of the content. (`string` method)
-2. Using a regular expression on that string NSTextFinder makes a text ranges of a matched phrase.
+2. Using a regular expression on that string [NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) makes a text ranges of a matched phrase.
 3. For every matched text range it asks the client for a bounding rect of that range - to display 'holes' in dimming view  (`rectsForCharacterRange:` method)
 4. Asks client to draw the current text range (`drawCharactersInRange:forContentView:`)
 5. When navigating next/prev the search result, it asks client to scroll client view to visible rect of the search result. (`scrollRangeToVisible:` method) 
 
 ##### Step 1 
-To make string representation of the content we have to walk DOM tree and extract all *text nodes* content, remembering DOM nodes and offset positions of the text content in that nodes (as an *NSArray* of `SHCWebViewTextRange` objects). If the `stripCombiningMarks` property is set to `YES` also a transform on the text content is performed.
+To make string representation of the content we have to walk DOM tree and extract all *text nodes* content, remembering DOM nodes and offset positions of the text content in that nodes (as an **NSArray** of `SHCWebViewTextRange` objects). If the `stripCombiningMarks` property is set to `YES` also a transform on the text content is performed.
 
 ##### Step 2
 It's the [NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) role, we don't need to do anything.
@@ -45,10 +45,10 @@ It's the [NSTextFinder](https://developer.apple.com/library/mac/documentation/Ap
 ##### Step 3
 To get bounding rects of text range we use _Java Script_ by `WebView.evaluateWebScript` method.
 * Firstly create the **DOMRange** object and configure it using remembered earlier data (from `SHCWebViewTextRange` objects)
-* Next for this **DOMRange** execute Java Script to get array of _bounding boxes_ of that range.
+* Next for this **DOMRange** execute _Java Script_ to get array of a bounding rects of that range.
 
 ##### Step 4
-As we can get bounding rects of the text range, to display that range we simply use WebView documentView `drawRect:`
+As we can get bounding rects of the text range, to display that range we simply use [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) documentView `drawRect:`
 
 
 
