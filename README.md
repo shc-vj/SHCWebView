@@ -10,7 +10,7 @@ SHCWebView
 
 ## Usage
 
-Use like normal [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) (in Interface Builder remember to change class to [SHCWebView](https://github.com/shc-vj/SHCWebView)).
+Use it like normal [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) (in Interface Builder remember to change class to [SHCWebView](https://github.com/shc-vj/SHCWebView)).
 Configure `textFinder` property to your [NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) object - it's necessary to communicate between [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) and [NSTextFinder](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSTextFinder_Class/index.html) (by ex. when the [WebView](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebView_Class/index.html) change its size).
 
 ### Setup
