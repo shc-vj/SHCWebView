@@ -55,6 +55,9 @@
                                             <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" javaEnabled="NO">
                                                 <nil key="identifier"/>
                                             </webPreferences>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="stripCombiningMarks" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <outlet property="textFinder" destination="oeZ-kU-6E0" id="UX4-Ht-268"/>
                                             </connections>
